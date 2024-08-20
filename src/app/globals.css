@@ -3,20 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    /* --background-color: rgb(14, 14, 14); */
+    --background-color: hsla(220, 27%, 98%, 1);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
 }
 
-body {
+.event-card {
+    box-shadow: 0px 2px 30px 0px hsla(0, 0%, 0%, 0.02);
+}
+
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,10 +30,52 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+body {
+    background: var(--background-color);
+    font-family: "Lexend", Helvetica, Arial, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.ticket_date_icon {
+    background: url("../assets/ticket_icon.svg") center;
+    object-fit: cover;
+    color: hsla(18, 100%, 59%, 1);
+    height: .25rem;
+    width: .25rem;
+    padding: 1rem;
+    background-size: cover;
+}
+
+.swiper {
+    height: 100%;
+    width: 100%;
+}
+
+.swiper .swiper-pagination-bullet-active {
+    transform: scale(2);
+    transform-origin: center;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    background: #fff;
+    border-radius: 100px;
+    padding: 2rem;
+    transform: translateX(-10px) scale(0.7);
+    color: hsla(246, 59%, 40%, 1);
+    display: flex;
+    align-items: center;
+    border: 2px solid whitesmoke;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 100;
+}
+
+.swiper-button-next {
+    transform: translateX(15px) scale(0.7);
 }
