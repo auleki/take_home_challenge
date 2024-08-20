@@ -4,6 +4,7 @@ import EmptyEvents from "@/components/empty-screens/EmptyEvents";
 import {useContext, useEffect, useState} from "react";
 import {fetchEventDetails} from "@/services/events.service";
 import {EventContext} from "@/context/EventContext";
+import {BarLoader, ClimbingBoxLoader} from "react-spinners";
 // import {XlviLoader} from "react-awesome-l"
 
 const EventList = () => {
@@ -24,9 +25,11 @@ const EventList = () => {
                     {eventCtx.events.map((event: IEvent) => <EventCard key={event.id} event={event}/>)}
                 </div>
             ) : eventCtx.isLoading ? (
-                <>
-                    <h2>Loading events ...</h2>
-                </>
+                <div className={'flex items-center gap-2'}>
+                    <h2 className={'bg-purple-500 text-white-400 text-sm rounded-full px-4 p-1'}>Loading</h2>
+                    <BarLoader color={"hsla(246, 59%, 40%, 1)"} />
+                    <h2 className={'bg-purple-500 text-white-400 text-sm rounded-full px-4 p-1'}>Events</h2>
+                </div>
             ) : <EmptyEvents/>}
 
         </div>

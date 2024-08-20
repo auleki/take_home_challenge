@@ -1,5 +1,6 @@
 "use client"
 import type {Metadata} from "next";
+import React from 'react'
 import {Lexend} from "next/font/google";
 import "./globals.css";
 import EventContextProvider from "@/context/EventContext";
@@ -15,8 +16,9 @@ const metadata: Metadata = {
 export default function RootLayout({
                                        children,
                                    }: Readonly<{
-    children: React.ReactNode;
+    children: Element;
 }>) {
+    // @ts-ignore
     return (
         <EventContextProvider>
             <html lang="en">
