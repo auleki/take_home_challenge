@@ -16,17 +16,20 @@ const metadata: Metadata = {
 export default function RootLayout({
                                        children,
                                    }: Readonly<{
-    children: Element;
+    children: React.ReactNode;
 }>) {
     // @ts-ignore
     return (
-        <EventContextProvider>
-            <html lang="en">
+        <html lang="en">
             <body className={inter.className}>
-            <TopNavbar/>
-            {children}
-            </body>
-            </html>
-        </EventContextProvider>
-    );
+            <EventContextProvider>
+                <TopNavbar/>
+                <>
+                    {children}
+                </>
+            </EventContextProvider>
+        </body>
+        </html>
+    )
+        ;
 }
