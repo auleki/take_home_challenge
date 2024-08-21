@@ -5,7 +5,7 @@ const EventInfo = ({type, value}: EventInfoProps) => {
     return (
         <>
             {type === "title" ? (
-                <h2 className="text-black-400 whitespace-nowrap overflow-hidden text-ellipsis w-5/6 font-semibold">{value}</h2>
+                <h2 title={value} className="text-black-400 whitespace-nowrap overflow-hidden text-ellipsis w-5/6 font-semibold">{value}</h2>
             ) : null}
             
             {type === "location" ? (

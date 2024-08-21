@@ -11,7 +11,7 @@ import {EventContext} from "@/context/EventContext";
 const Events = () => {
     const eventCtx = useContext(EventContext)
     return (
-        <main className="flex min-h-screen flex-col p-24">
+        <main className="flex min-h-screen flex-col sm:p-24 px-10 mt-10">
             <SearchBar/>
             <br/>
             {eventCtx.featuredEvents?.length ? (

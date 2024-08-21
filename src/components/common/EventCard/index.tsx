@@ -35,7 +35,7 @@ export default function EventCard({event, featured}: EventProps) {
 
     return (
         <div
-            className={`bg-white-400 flex flex-col ${featured ? '2/4 swiper-slide' : 'w-[355px]'} gap-4  justify-center overflow-hidden p-4 rounded-lg event-card`}>
+            className={`bg-white-400 flex flex-col ${featured ? 'w-[600px] swiper-slide' : 'w-[355px]'} gap-4 justify-center overflow-hidden p-4 rounded-md event-card`}>
             {/* Image */}
             <div className="w-full mb-2 overflow-x-hidden rounded-md">
                 <Image
@@ -74,7 +74,7 @@ export default function EventCard({event, featured}: EventProps) {
                     <div className={`flex ${featured ? 'justify-between' : 'flex-col'} gap-3`}>
                         {/* FEE */}
                         <EventInfo type={"fee"} value={"900,000"}/>
-                        <Button text={`Buy Ticket ${featured ? "(Featured)" : ""}`} onClick={() => {
+                        <Button text={`Buy Ticket`} onClick={() => {
                         }}/>
                     </div>
 

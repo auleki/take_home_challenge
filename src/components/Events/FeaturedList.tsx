@@ -11,6 +11,10 @@ import {Autoplay, Navigation, Pagination} from "swiper/modules";
 const FeaturedList = () => {
     const eventCtx = useContext(EventContext);
     const [featuredEvents, setFeaturedEvents] = useState<IEvent[] | undefined>([]);
+    const [windowsDimension, setWindowsDimension] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    })
     
     
     useEffect(() => {
@@ -18,18 +22,23 @@ const FeaturedList = () => {
     }, [eventCtx.featuredEvents]);
 
     return (
-        <div className="flex gap-2 swiper">
+        <div className="flex gap-2 overflow-hidden rounded-md swiper">
             {eventCtx.featuredEvents?.length ? (
                 <Swiper
                     navigation
                     loop={true}
                     spaceBetween={10}
-                    slidesPerView={2}
+                    slidesPerView={1}
+                    breakpoints={{
+                        940: {
+                            slidesPerView: 2
+                        }
+                    }}
                     modules={[Autoplay, Navigation]}
                     pagination={{ type: 'bullets', clickable: true }}
                 >
                     {featuredEvents?.length ? featuredEvents.map((featuredEvent: IEvent) => (
-                        <SwiperSlide key={featuredEvent.id}>
+                        <SwiperSlide key={featuredEvent.id} className="">
                             <EventCard featured event={featuredEvent} key={featuredEvent.id} />
                         </SwiperSlide>
                     )) : null}
