@@ -1,12 +1,13 @@
 ﻿import Image, {StaticImageData} from "next/image";
 import {DatePickerIcon, EventIcon, LocationIcon} from "../../icons";
 import EventImg from "../../assets/images/halloween-img.png"
-import {EventProps} from "@/types/component";
+import {EventProps, IEvent} from "@/types/component";
 import FeaturedImg from "../../../assets/images/unsplash_MYRG0ptGh50.png"
 import EventInfo from "@/components/common/EventCard/EventInfo";
 import Button from "@/components/common/Button";
 import PlaceholderFeatured from "@/assets/images/placeholder_featured.jpg"
 import PlaceholderImg from "@/assets/placeholder_image.png"
+import {red} from "next/dist/lib/picocolors";
 export default function EventCard({event, featured}: EventProps) {
 
     const decideImageUrl = () => {
@@ -14,28 +15,29 @@ export default function EventCard({event, featured}: EventProps) {
         
         if (event?.artist?.image_url) {
             if (featured) {
-            //     USE FEATURED IMAGE
                 imageUrl = event?.artist?.image_url
             } else {
-                // USE NORMAL IMAGE
+                // include this just in case the thumbnail picture would be different
                 imageUrl = event?.artist?.image_url
             }
         } else {
             if (featured) {
-                //     USE PLACEHOLDER FOR FEATURED IMAGE
                 imageUrl = PlaceholderFeatured
             } else {
-            // USE PLACE FOR NORMAL IMAGE
                 imageUrl = PlaceholderImg
             }
         }
-        console.log('Deciding', {[`image ${event.venue.name}`]: event?.artist?.image_url})
         return imageUrl
+    }
+    
+    const redirectToEventURL = (url: string) => {
+        // push route onto history stack - enable user use back
+        window.location.href = url
     }
 
     return (
         <div
-            className={`bg-white-400 flex flex-col ${featured ? 'w-[600px] swiper-slide' : 'w-[355px]'} gap-4 justify-center overflow-hidden p-4 rounded-md event-card`}>
+            className={`bg-white-400 flex flex-col ${featured ? 'w-[400px] swiper-slide' : 'w-[355px]'} gap-4 justify-center overflow-hidden p-4 rounded-md event-card`}>
             {/* Image */}
             <div className="w-full mb-2 overflow-x-hidden rounded-md">
                 <Image
@@ -74,8 +76,7 @@ export default function EventCard({event, featured}: EventProps) {
                     <div className={`flex ${featured ? 'justify-between' : 'flex-col'} gap-3`}>
                         {/* FEE */}
                         <EventInfo type={"fee"} value={"900,000"}/>
-                        <Button text={`Buy Ticket`} onClick={() => {
-                        }}/>
+                        <Button text={`Buy Ticket`} onClick={() => redirectToEventURL(event?.url)}/>
                     </div>
 
                 </div>

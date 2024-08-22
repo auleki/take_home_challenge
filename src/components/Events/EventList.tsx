@@ -14,9 +14,9 @@ const EventList = () => {
         eventCtx.loadEventDetails()
     }, []);
 
-    useEffect(() => {
-        console.log({featuredEvents: eventCtx.featuredEvents})
-    }, [eventCtx.featuredEvents]);
+    // useEffect(() => {
+        // console.log({featuredEvents: eventCtx.featuredEvents})
+    // }, [eventCtx.featuredEvents]);
 
     return (
         <div className={'flex items-start w-full rounded'}>

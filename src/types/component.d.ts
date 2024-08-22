@@ -34,6 +34,7 @@ export interface IEvent {
     artist: {
         image_url: string;
     };
+    url: string;
 }
 
 export interface IEventContext {

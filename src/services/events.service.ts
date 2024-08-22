@@ -13,9 +13,9 @@ export const fetchEventDetails = async (
         const results = await axios.get(apiEndpoint)
         // Extra first three events from the events list returned
         const [eOne, eTwo, eThree, ...otherEvents] = results.data
-        console.log({results})
+        // console.log({results})
         setFeaturedEvents([eOne, eTwo, eThree])
-        console.log({ft: [eOne, eTwo, eThree]})
+        // console.log({ft: [eOne, eTwo, eThree]})
         setEvents(otherEvents)
     } catch (e) {
         console.log({e})
